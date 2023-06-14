@@ -1,0 +1,12 @@
+<%= turbo_frame_tag "subscription-frame" do %>
+		<% if defined?(subscription) %>
+				<p>Sorry, there was an error with your subscription:</p>
+				<ul>
+						<% subscription.errors.full_messages.each do |error| %>
+								<li><%= error %></li>
+						<% end %>
+				</ul>
+		<% end %>
+
+		<%= render 'subscriptions/subscription_form' %>
+<% end %>

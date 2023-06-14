@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+		<head>
+				<meta charset="UTF-8">
+				<meta name="viewport" content="width=device-width, initial-scale=1.0">
+				<title>BazookaCSV</title>
+				<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+		</head>
+		<body class="flex items-center justify-center h-screen bg-gradient-to-r from-purple-600 to-indigo-600">
+				<script>
+				 document.addEventListener('turbo:load', function () {
+
+						 const frame = document.querySelector('#subscription-frame');
+						 const subscriptionForm = frame.querySelector('form[data-controller="subscriptions"]');
+						 const emailInput = subscriptionForm.querySelector('input[type="email"]');
+
+						 emailInput.addEventListener('input', function () {
+								 emailInput.setCustomValidity('');
+						 });
+
+						 emailInput.addEventListener('invalid', function () {
+								 if (emailInput.value === '') {
+										 emailInput.setCustomValidity('Please enter your email address.');
+								 } else {
+										 emailInput.setCustomValidity('Please enter a valid email address.');
+								 }
+						 });
+						 document.addEventListener('turbo:submit-end', function (event) {
+								 const frame = document.querySelector('#subscription-frame');
+								 const formSubmissionResult = event.detail.formSubmission.result;
+								 if(formSubmissionResult.success) {
+										 const confettiController = document.querySelector('#surprize');
+										 console.log(confettiController);
+										 const clickEvent = new MouseEvent('click', {
+												 bubbles: true, // Allow the event to bubble up through the DOM hierarchy
+												 cancelable: true, // Allow the event to be canceled
+												 // You can specify additional properties of the event if needed
+										 });
+										 if (confettiController) {
+												 confettiController.dispatchEvent(clickEvent);
+										 }
+								 }
+						 });
+				 });
+
+				</script>
+
+				<div class="text-center">
+						<h1 class="text-6xl text-white font-bold mb-8">BazookaCSV</h1>
+						<ul class="max-w-2xl mx-auto text-gray-200 mt-8">
+								<li class="mb-4">
+										<svg class="w-6 h-6 inline-block mr-2 text-green-500">
+												<use xlink:href="#check-circle" />
+										</svg>
+										CSV Transformation through a simple DSL.
+								</li>
+								<li class="mb-4">
+										<svg class="w-6 h-6 inline-block mr-2 text-green-500">
+												<use xlink:href="#file" />
+										</svg>
+										CSV Column values are validated and coerced from an inferred data schema or a user-defined one.
+								</li>
+								<li class="mb-4">
+										<svg class="w-6 h-6 inline-block mr-2 text-green-500">
+												<use xlink:href="#chart" />
+										</svg>
+										CSV Processing happens in parallel for big files.
+								</li>
+						</ul>
+
+						<%= render 'subscriptions/subscription_frame' %>
+				</div>
+
+				<!-- SVG Sprites -->
+				<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+						<symbol id="check-circle" viewBox="0 0 24 24" fill="currentColor">
+								<path d="M20.71 5.29L9.71 16.29 7.29 13.88A1 1 0 0 0 5.88 14.29L9.59 18H6A1 1 0 0 0 5 19V21A1 1 0 0 0 6 22H18a1 1 0 0 0 1-1v-3.59l3.71 3.7a1 1 0 0 0 1.42 0l.72-.72a1 1 0 0 0 0-1.42zM14 3a1 1 0 0 1 1 1v2.59l2.29-2.3a1 1 0 0 1 1.42 0l.72.72a1 1 0 0 1 0 1.42L16.41 9H19a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V10a1 1 0 0 1 1-1h2.59l-4-4H3a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h11zm-2 1H4v3.59l8 8L12.59 15H14V4z" />
+						</symbol>
+						<symbol id="file" viewBox="0 0 24 24" fill="currentColor">
+								<path d="M21.71 6.29l-9-4a1 1 0 0 0-.86 0l-9 4A1 1 0 0 0 2 7v10a1 1 0 0 0 .86.99l9 1.71a1 1 0 0 0 .28 0l9-1.71A1 1 0 0 0 22 17V7a1 1 0 0 0-.29-.71zM20 17l-8 1.52L4 17V7l8 1.52L20 7v10z" />
+						</symbol>
+						<symbol id="chart" viewBox="0 0 24 24" fill="currentColor">
+								<path d="M21.707 2.293a1 1 0 0 0-1.414 0L7 14.586V21h6.414L21.707 9.707a1 1 0 0 0 0-1.414l-1.414-1.414zM19.586 8L14 13.586V10a1 1 0 0 0-2 0v4.586L4.414 8H19.586zM2 20h14v2H2v-2z" />
+						</symbol>
+				</svg>
+
+
+		</body>
+
+</html>

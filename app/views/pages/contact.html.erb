@@ -1,0 +1,9 @@
+<%= form_with(url: subscribe_path, method: :post) do |form| %>
+  <div>
+    <%= form.email_field :email, placeholder: 'Enter your email address' %>
+  </div>
+  
+  <div>
+    <%= form.submit 'Subscribe' %>
+  </div>
+<% end %>
