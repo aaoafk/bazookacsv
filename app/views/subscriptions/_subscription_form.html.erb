@@ -1,18 +1,9 @@
-<div class="max-w-md mx-auto mt-8">
-		<!-- <button target="_blank"
-				 id="surprize"
-				 data-controller="confetti"
-				 data-action="click->confetti#spray"
-				 data-animation-value="stars"
-				 ></button>
-		-->
-		<%= form_with(url: subscriptions_path, data: { turbo_frame: "subscription-frame", turbo_action: "replace" }) do |form| %>
-				<div class="mb-4">
-						<%= form.label :email, class: 'sr-only' %>
-						<%= form.email_field :email, class: 'form-input mt-1 block w-full', placeholder: 'Enter your email', required: true, pattern: '[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$' %>
-				</div>
-				<div class="flex items-center justify-center">
-						<%= form.submit 'Subscribe', class: 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline' %>
-				</div>
-		<% end %>
-</div>
+<%= form_with(url: subscriptions_path) do |form| %>
+		<div class="mb-4">
+				<%= form.label :email, class: 'sr-only' %>
+				<%= form.email_field :email, class: 'form-input mt-1 block w-full', placeholder: 'Enter your email', required: true %>
+
+		</div>
+		<%= form.submit 'Subscribe', class: 'bg-green-500 hover:bg-green-600 active:bg-green-700 text-white font-serif font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline' %>
+<% end %>
+

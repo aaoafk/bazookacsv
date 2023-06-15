@@ -6,65 +6,25 @@
 				<title>BazookaCSV</title>
 				<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 		</head>
-		<body class="flex items-center justify-center h-screen bg-gradient-to-r from-purple-600 to-indigo-600">
-				<script>
-				 document.addEventListener('turbo:load', function () {
-
-						 const frame = document.querySelector('#subscription-frame');
-						 const subscriptionForm = frame.querySelector('form[data-controller="subscriptions"]');
-						 const emailInput = subscriptionForm.querySelector('input[type="email"]');
-
-						 emailInput.addEventListener('input', function () {
-								 emailInput.setCustomValidity('');
-						 });
-
-						 emailInput.addEventListener('invalid', function () {
-								 if (emailInput.value === '') {
-										 emailInput.setCustomValidity('Please enter your email address.');
-								 } else {
-										 emailInput.setCustomValidity('Please enter a valid email address.');
-								 }
-						 });
-						 document.addEventListener('turbo:submit-end', function (event) {
-								 const frame = document.querySelector('#subscription-frame');
-								 const formSubmissionResult = event.detail.formSubmission.result;
-								 if(formSubmissionResult.success) {
-										 const confettiController = document.querySelector('#surprize');
-										 console.log(confettiController);
-										 const clickEvent = new MouseEvent('click', {
-												 bubbles: true, // Allow the event to bubble up through the DOM hierarchy
-												 cancelable: true, // Allow the event to be canceled
-												 // You can specify additional properties of the event if needed
-										 });
-										 if (confettiController) {
-												 confettiController.dispatchEvent(clickEvent);
-										 }
-								 }
-						 });
-				 });
-
-				</script>
-
+		<body class="flex items-center justify-center h-screen">
 				<div class="text-center">
-						<h1 class="text-6xl text-white font-bold mb-8">BazookaCSV</h1>
-						<ul class="max-w-2xl mx-auto text-gray-200 mt-8">
+						<h1 class="underline font-serif border-black text-7xl text-black mb-8">
+								BazookaCSV
+						</h1>
+						<ul class="font-sans max-w-2xl text-black mt-8">
 								<li class="mb-4">
-										<svg class="w-6 h-6 inline-block mr-2 text-green-500">
-												<use xlink:href="#check-circle" />
-										</svg>
 										CSV Transformation through a simple DSL.
 								</li>
 								<li class="mb-4">
-										<svg class="w-6 h-6 inline-block mr-2 text-green-500">
-												<use xlink:href="#file" />
-										</svg>
-										CSV Column values are validated and coerced from an inferred data schema or a user-defined one.
+										CSV Column values are validated and converted from
+										an inferred data schema or a user-defined one.
 								</li>
 								<li class="mb-4">
-										<svg class="w-6 h-6 inline-block mr-2 text-green-500">
-												<use xlink:href="#chart" />
-										</svg>
-										CSV Processing happens in parallel for big files.
+										CSV Processing can happen in parallel for bigger
+										files.
+								</li>
+								<li class="mb-4">
+										Easy integration for your ruby or rails application.
 								</li>
 						</ul>
 

@@ -6,4 +6,7 @@ const application = Application.start()
 application.debug = false
 window.Stimulus   = application
 
+import { Confetti } from "stimulus-confetti"
+application.register('confetti', Confetti)
+
 export { application }

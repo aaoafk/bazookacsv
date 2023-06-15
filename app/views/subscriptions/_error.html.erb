@@ -1,12 +1,17 @@
-<%= turbo_frame_tag "subscription-frame" do %>
-		<% if defined?(subscription) %>
-				<p>Sorry, there was an error with your subscription:</p>
-				<ul>
-						<% subscription.errors.full_messages.each do |error| %>
-								<li><%= error %></li>
+<body class="flex items-center justify-center">
+		<div class="flex items-center justify-center">
+				<div class="text-center">
+						<% if defined?(subscription) %>
+								<h2 class="underline text-5xl font-serif">
+										Oh no! There was an error with your subscription:
+								</h2>
+								<ul>
+										<% subscription.errors.full_messages.each do |error| %>
+												<li class="flex-1 text-lg font-serif"><%= error %></li>
+										<% end %>
+								</ul>
 						<% end %>
-				</ul>
-		<% end %>
-
-		<%= render 'subscriptions/subscription_form' %>
-<% end %>
+						<%= render 'subscription_form' %>
+				</div>
+		</div>
+</body>

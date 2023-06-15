@@ -1,3 +1,15 @@
-<%= turbo_frame_tag "subscription-frame" do %>
-		<h1>Subscription Successful!</h1>
-<% end %>
+<div class="flex items-center justify-center">
+		<div class="text-center">
+				<h1 class="mb-4 underline underline-offset4 text-5xl text-black font-serif">
+						You're subscribed! Stay tuned!
+				</h1>
+
+				<a href="#"
+					 onClick="return false;"
+					 class="mb-4 bg-green-500 hover:bg-green-600 active:bg-green-700 text-white font-serif font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+					 data-controller="confetti"
+					 data-action="click->confetti#spray"
+					 data-animation-value="school-pride"
+				>Celebrate</a>
+		</div>
+</div>
